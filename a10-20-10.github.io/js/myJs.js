@@ -8,10 +8,10 @@ const textConfig = {
   text7: "🐥 có gì để nói với tui không nèeee ?",
   text8: "Gửi cho tui coi dớiii",
   text9: "Cảm ơn nhoooo <3333",
-  text10: "1, 2, 3 con 🐥. 20/10 vui vẻ nháaaa",
+  text10: "1, 2, 3 con ...🐥",
   text11:
-    "Okela nè. Chúc 🐥 có một ngày 20/10 thiệc là dui dẻ nhoaaaaaa ",
-  text12: "Okelaaa luônnnnn <3",
+    "Hãy nhìn xuống dưới",
+  text12: "Nhìn cái gì nữa bấm đê 🐥",
 };
 
 $(document).ready(function () {
@@ -185,6 +185,19 @@ $(document).ready(function () {
             customClass: {
               popup: 'chicken-letter-popup'
             }
+          }).then(() => {
+            // Hiển thị thông báo kết thúc
+            Swal.fire({
+              title: "🎉 Hết rồi còn đâu 🎉",
+              text: "Chúc 🐥 có một ngày 20/10 thật vui vẻ và hạnh phúc nhéeee! 💕",
+              imageUrl: "img/cuteCat.jpg",
+              imageWidth: 250,
+              imageHeight: 250,
+              background: '#fff url("img/iput-bg.jpg")',
+              confirmButtonText: "Byeeee 👋",
+              confirmButtonColor: "#fe8a71",
+              imageAlt: "Goodbye image"
+            });
           });
         });
       }
