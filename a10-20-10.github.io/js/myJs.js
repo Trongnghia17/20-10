@@ -30,6 +30,7 @@ $(document).ready(function () {
   $("#no").html(textConfig.text5);
   $("#yes").html(textConfig.text6);
 
+
   function firstQuestion() {
     $(".content").hide();
     Swal.fire({
@@ -137,9 +138,54 @@ $(document).ready(function () {
           title: textConfig.text10,
           text: textConfig.text11,
           confirmButtonColor: "#83d0c9",
-          onClose: () => {
-            window.location = "https://youtu.be/nMq0RaB_G50";
-          },
+        }).then(() => {
+          // Hiển thị bức thư
+          Swal.fire({
+            width: 800,
+            padding: "24",
+            background: 'linear-gradient(135deg, #FFF9E6 0%, #FFEDCC 100%)',
+            title: "💌 Thư gửi 🐥 nhân ngày 20/10 💌",
+            html: `
+              <div class="chicken-letter-container">
+                <!-- Decorative chickens -->
+                <div class="chicken-decoration-top-left">🐥</div>
+                <div class="chicken-decoration-top-right">🐥</div>
+                <div class="chicken-decoration-bottom">🐥🐣🐥</div>
+                
+                <div class="chicken-letter-content">
+                  <p class="chicken-greeting">
+                    <span class="chicken-greeting-icon">🐥</span> Chào 🐥,
+                  </p>
+                  <p class="chicken-paragraph chicken-paragraph-gold">
+                    Tui biết dạo này 🐥 đang rất bận rộn với deadline, áp lực công việc và học tập.
+                    Nhưng tui muốn 🐥 biết rằng, dù có vất vả đến đâu, 🐥 vẫn luôn là một người tuyệt vời
+                    trong mắt tui. <span class="chicken-emoji-decoration">🌟</span>
+                  </p>
+                  <p class="chicken-paragraph chicken-paragraph-orange">
+                    Nhân ngày Phụ nữ Việt Nam 20/10, tui muốn gửi đến 🐥 những lời chúc tốt đẹp nhất.
+                    Chúc 🐥 luôn vui vẻ, hạnh phúc và thành công trong mọi việc. Hãy luôn giữ nụ cười
+                    tươi tắn và tinh thần lạc quan nhé! <span class="chicken-emoji-decoration">💐</span>
+                  </p>
+                  <p class="chicken-paragraph chicken-paragraph-gold">
+                    🐥 hãy nhớ rằng, sau mỗi deadline vất vả đều sẽ có những khoảnh khắc thư giãn đáng nhớ.
+                    Và tui sẽ luôn ở đây để ủng hộ 🐥! <span class="chicken-emoji-decoration">💪</span>
+                  </p>
+                  <div class="chicken-divider">
+                    <span class="chicken-divider-emojis">🐔🐥🐣🥚</span>
+                  </div>
+                  <p class="chicken-signature">
+                   TÊ LỜ ❤️<br>
+                    <span class="chicken-date">20/10/2025</span>
+                  </p>
+                </div>
+              </div>
+            `,
+            confirmButtonText: "🐥 Cảm ơn nhaaa 🐥",
+            confirmButtonColor: "#FFD700",
+            customClass: {
+              popup: 'chicken-letter-popup'
+            }
+          });
         });
       }
     });
