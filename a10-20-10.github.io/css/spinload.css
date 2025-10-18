@@ -5,8 +5,18 @@
 	left:0;
 	right:0;
 	bottom:0;
-	background-color:#ef6a8a; /* change if the mask should have another color then white */
+	background: linear-gradient(135deg, #ef6a8a 0%, #f093a8 50%, #ef6a8a 100%);
 	z-index:9999999; /* makes sure it stays on top */
+	animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+	0%, 100% {
+		background: linear-gradient(135deg, #ef6a8a 0%, #f093a8 50%, #ef6a8a 100%);
+	}
+	50% {
+		background: linear-gradient(135deg, #f093a8 0%, #ef6a8a 50%, #f093a8 100%);
+	}
 }
 
 .spinner {

@@ -1,20 +1,70 @@
+/* Tối ưu cho mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
 .content {
     position: relative;
     z-index: 3;
+    animation: fadeIn 1s ease-in;
   }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
   #no{
     position: absolute;
     display: inline-block;
     left: 35%; 
     top: 40vh;
     -webkit-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+    box-shadow: 0 4px 15px rgba(0, 184, 217, 0.4);
+    border-radius: 30px;
+    font-weight: bold;
+    transform: scale(1);
   }
+  
+  #no:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 184, 217, 0.6);
+  }
+  
   #yes{
     position: absolute;
     display: inline-block;
     left: 70%; 
     top: 40vh;
     -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+    border-radius: 30px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  #yes:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 25px rgba(220, 53, 69, 0.8);
+    animation: none;
   }
 #bg{
   position: fixed;
@@ -23,19 +73,55 @@
   bottom: 0;
   left: 0;
   opacity: 1;
-  /* height: 100vh; */
+  height: 100vh;
+  width: 100vw;
   z-index: 0;
   background-repeat: no-repeat;
   background-image: url(../img/Collage.png);
   background-size: cover;
-  background-position: 50%;
+  background-position: center center;
+  background-attachment: fixed;
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
 
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+#bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(255, 182, 193, 0.1) 100%);
+  z-index: 1;
 }
 .swal2-title, .swal2-content{
   color: azure !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 .swal2-popup {
   border-radius: 15px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 header h2 {
@@ -43,42 +129,210 @@ header h2 {
   color: #fffb00;
   font-size: 80px;
   text-align: center;
-	margin-bottom: 30px;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3),
+               0 0 20px rgba(255, 251, 0, 0.5),
+               0 0 30px rgba(255, 251, 0, 0.3);
+  animation: glow 2s ease-in-out infinite alternate;
 }
+
+@keyframes glow {
+  from {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3),
+                 0 0 20px rgba(255, 251, 0, 0.5),
+                 0 0 30px rgba(255, 251, 0, 0.3);
+  }
+  to {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3),
+                 0 0 30px rgba(255, 251, 0, 0.7),
+                 0 0 40px rgba(255, 251, 0, 0.5);
+  }
+}
+
 header h4 {
   font-family: 'Pacifico';
   color: #CCFFFF;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4),
+               0 0 10px rgba(204, 255, 255, 0.5);
+  animation: fadeInUp 1.5s ease-in;
 }
 
-@media only screen and (max-width: 500px) {
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #bg {
+    background-attachment: scroll;
+    background-position: center top;
+    animation: slowZoom 15s ease-in-out infinite alternate;
+  }
+  
   header h2 {
     font-family: 'Pacifico';
-    font-size: 45px;
+    font-size: 42px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                 0 0 15px rgba(255, 251, 0, 0.5),
+                 0 0 25px rgba(255, 251, 0, 0.3);
+    animation: glow 2s ease-in-out infinite alternate;
   }
+  
   header h4 {
     font-family: 'Pacifico';
     text-align: center;
-    padding: 15px;
+    padding: 10px 15px;
+    font-size: 33px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4),
+                 0 0 8px rgba(204, 255, 255, 0.5);
+    animation: fadeInUp 1.5s ease-in;
   }
+  
   #no{
     position: absolute;
     display: inline-block;
-    left: 7%; 
-    top: 40vh;
-    font-size: 14px;
-    padding: 3px;
+    left: 10%; 
+    top: 45vh;
+    font-size: 16px;
+    padding: 10px 14px;
     -webkit-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+    box-shadow: 0 3px 12px rgba(0, 184, 217, 0.5);
+    border-radius: 30px;
+    font-weight: bold;
+    transform: scale(1);
   }
+  
+  #no:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(0, 184, 217, 0.6);
+  }
+  
   #yes{
     position: absolute;
     display: inline-block;
-    left: 58%; 
-    top: 40vh;
-    font-size: 14px;
-    padding: 3px;
+    left: 55%; 
+    top: 45vh;
+    font-size: 16px;
+    padding: 10px 14px;
     -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 3px 12px rgba(220, 53, 69, 0.5);
+    border-radius: 30px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+  }
+  
+  #yes:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.7);
+    animation: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #bg {
+    background-position: center center;
+    animation: slowZoom 12s ease-in-out infinite alternate;
+  }
+  
+  header h2 {
+    font-family: 'Pacifico';
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4),
+                 0 0 12px rgba(255, 251, 0, 0.6),
+                 0 0 20px rgba(255, 251, 0, 0.4);
+    animation: glow 2s ease-in-out infinite alternate;
+    line-height: 1.3;
+  }
+  
+  header h4 {
+    font-family: 'Pacifico';
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 33px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4),
+                 0 0 8px rgba(204, 255, 255, 0.5);
+    animation: fadeInUp 1.5s ease-in;
+    line-height: 1.4;
+  }
+  
+  #no{
+    position: absolute;
+    display: inline-block;
+    left: 8%; 
+    top: 50vh;
+    font-size: 13px;
+    padding: 8px 12px;
+    -webkit-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+    box-shadow: 0 3px 10px rgba(0, 184, 217, 0.5);
+    border-radius: 30px;
+    font-weight: bold;
+    transform: scale(1);
+    min-width: 100px;
+  }
+  
+  #no:active {
+    transform: scale(0.92);
+    box-shadow: 0 2px 6px rgba(0, 184, 217, 0.7);
+  }
+  
+  #yes{
+    position: absolute;
+    display: inline-block;
+    left: 52%; 
+    top: 50vh;
+    font-size: 13px;
+    padding: 8px 12px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 3px 10px rgba(220, 53, 69, 0.5);
+    border-radius: 30px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+    min-width: 100px;
+  }
+  
+  #yes:active {
+    transform: scale(0.92);
+    box-shadow: 0 2px 6px rgba(220, 53, 69, 0.7);
+    animation: none;
+  }
+  
+  /* Tối ưu animation cho mobile */
+  @keyframes glow {
+    from {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4),
+                   0 0 12px rgba(255, 251, 0, 0.6),
+                   0 0 20px rgba(255, 251, 0, 0.4);
+    }
+    to {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4),
+                   0 0 18px rgba(255, 251, 0, 0.8),
+                   0 0 28px rgba(255, 251, 0, 0.6);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
   }
 }
