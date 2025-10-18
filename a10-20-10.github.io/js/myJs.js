@@ -82,6 +82,14 @@ $(document).ready(function () {
     if (n > 1) moveButton();
     n++;
   });
+  
+  // Thêm sự kiện cho mobile
+  $("#no").on("touchstart", function (e) {
+    e.preventDefault();
+    moveButton();
+    n++;
+  });
+  
   $("#no").click(() => {
     if (screen.width >= 900) switchButton();
   });
